@@ -1,4 +1,4 @@
-const mysql = require('../config/mysql')
+const mysql = require('../../../config/mysql')
 const Result = require('../../../constants/result')
 
 module.exports = async (req, res) => {
