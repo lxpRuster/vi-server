@@ -16,13 +16,13 @@ module.exports = async (req, res) => {
     }
 
     const result = await sequelize.query(sql, {
-            replacements: [limit, (page - 1) * limit],
-            order: ['Time', 'DESC'],
+            order: ['NewGame', 'createTime', 'DESC'],
             type: QueryTypes.SELECT,
             limit: limit,
             offset: (page - 1) * limit
         }
     );
+
     const total = await sequelize.query(querySql, {type: QueryTypes.SELECT});
     const totalNumber = total[0].count;
     const data = Result.pageResult(page, limit, totalNumber, result);
