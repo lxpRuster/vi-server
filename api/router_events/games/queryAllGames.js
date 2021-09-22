@@ -1,4 +1,5 @@
-const mysql = require('../../../config/mysql')
+const {QueryTypes} = require('sequelize');
+const sequelize = require('../../../config/mysql2')
 const Result = require('../../../constants/result')
 
 module.exports = async (req, res) => {
@@ -15,8 +16,8 @@ module.exports = async (req, res) => {
     }
     sql += ' ORDER BY NewGame.createTime DESC limit ? offset ?';
 
-    const result = await mysql.query(sql, [limit, (page - 1) * limit]);
-    const total = await mysql.query(querySql);
+    const result = await sequelize.query(sql, {replacements: [limit, (page - 1) * limit], type: QueryTypes.SELECT});
+    const total = await sequelize.query(querySql, {type: QueryTypes.SELECT});
     const totalNumber = total[0].count;
     const data = Result.pageResult(page, limit, totalNumber, result);
 
