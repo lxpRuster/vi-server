@@ -14,15 +14,12 @@ module.exports = async (req, res) => {
         sql += ' and NewGame.game=' + mysql.escape(gameAddress);
         querySql += ',NewGame WHERE StatisticsGameId.gameId=NewGame.gameId AND NewGame.game=' + mysql.escape(gameAddress);
     }
+    sql += ' ORDER BY NewGame.createTime DESC limit ? offset ?';
 
     const result = await sequelize.query(sql, {
-            type: QueryTypes.SELECT,
-            order: ['NewGame', 'createTime', 'DESC'],
-            limit: limit,
-            offset: (page - 1) * limit
-        }
-    );
-
+        replacements: [limit, (page - 1) * limit],
+        type: QueryTypes.SELECT
+    });
     const total = await sequelize.query(querySql, {type: QueryTypes.SELECT});
     const totalNumber = total[0].count;
     const data = Result.pageResult(page, limit, totalNumber, result);

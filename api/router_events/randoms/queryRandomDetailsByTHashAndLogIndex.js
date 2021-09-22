@@ -1,4 +1,5 @@
-const mysql = require('../config/mysql')
+const {QueryTypes} = require('sequelize');
+const sequelize = require('../../../config/mysql2')
 const Result = require('../../../constants/result')
 
 module.exports = async (req, res) => {
@@ -20,8 +21,15 @@ module.exports = async (req, res) => {
         'and GameWrite.itemId=?';
     const querySql = 'SELECT privateKey FROM PublishPrivateKey WHERE itemId=?';
 
-    const result = await mysql.query(sql, [transactionHash, logIndex, itemId]);
-    const privateKey = await mysql.query(querySql, [itemId]);
+    const result = await sequelize.query(sql, {
+        replacements: [transactionHash, logIndex, itemId],
+        type: QueryTypes.SELECT
+    });
+    const privateKey = await sequelize.query(querySql, {
+        replacements: [itemId],
+        type: QueryTypes.SELECT
+    });
+
     const data = Result.privateKeyResult(result, privateKey);
 
     res.status(200).json(data);
