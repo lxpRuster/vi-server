@@ -16,8 +16,8 @@ module.exports = async (req, res) => {
     }
 
     const result = await sequelize.query(sql, {
-            order: ['NewGame', 'createTime', 'DESC'],
             type: QueryTypes.SELECT,
+            order: ['NewGame', 'createTime', 'DESC'],
             limit: limit,
             offset: (page - 1) * limit
         }
