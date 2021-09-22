@@ -1,4 +1,5 @@
-const mysql = require('../../../config/mysql')
+const {QueryTypes} = require('sequelize');
+const sequelize = require('../../../config/mysql2')
 const Result = require('../../../constants/result')
 
 module.exports = async (req, res) => {
@@ -8,8 +9,14 @@ module.exports = async (req, res) => {
     const sql = 'SELECT NewGameItem.createTime AS DATA,NewGame.gameName,NewGame.gameId,NewGame.mng AS AdminAdress,NewGameScene.sceneName,NewGameScene.sceneId,NewGameItem.itemId,NewGameItem.pubkey FROM NewGame,NewGameScene,NewGameItem WHERE NewGame.gameId=NewGameItem.gameId AND NewGameScene.sceneId=NewGameItem.sceneId AND NewGameItem.itemId=?';
     const querySql = 'SELECT privateKey FROM PublishPrivateKey WHERE itemId=?';
 
-    const result = await mysql.query(sql, [itemId]);
-    const privateKey = await mysql.query(querySql, [itemId]);
+    const result = await sequelize.query(sql, {
+        replacements: [itemId],
+        type: QueryTypes.SELECT
+    });
+    const privateKey = await sequelize.query(querySql, {
+        replacements: [itemId],
+        type: QueryTypes.SELECT
+    });
 
     const data = Result.privateKeyResult(result, privateKey);
 
