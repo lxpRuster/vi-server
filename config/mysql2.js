@@ -12,7 +12,7 @@ const {Sequelize} = require("sequelize");
 //     dialect: 'mysql',
 //     dialectModule: require('mysql2'),
 // });
-const sequelize = new Sequelize('router_events', 'nullsre', 'hcJBhncnUsZayXWf$$', {
+const sequelize = new Sequelize('test1_nulls_world', 'nullsre', 'hcJBhncnUsZayXWf$$', {
     host: 'rm-3nsbo8xy0h258g04yjo.mysql.rds.aliyuncs.com',
     port: 3306,
     dialect: 'mysql',
