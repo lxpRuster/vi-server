@@ -1,5 +1,5 @@
 const {QueryTypes} = require('sequelize');
-const sequelize = require('../../../config/mysql2')
+const sequelize = require('../../../config/mysql2_randoms')
 const Result = require('../../../constants/result')
 
 module.exports = async (req, res) => {
