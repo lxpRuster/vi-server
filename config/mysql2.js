@@ -15,4 +15,5 @@ const sequelize = new Sequelize('test2_nulls_world', process.env.USER, process.e
     },
 });
 
+
 module.exports = sequelize
