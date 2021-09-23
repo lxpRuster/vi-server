@@ -1,9 +1,9 @@
 /* indent size: 2 */
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/sequelize");
+const sequelize = require("../config/mysql2");
 
 
-  const config = sequelize.define('config', {
+  const config = sequelize.define('Config', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -18,7 +18,8 @@ const sequelize = require("../config/sequelize");
       allowNull: true
     }
   }, {
-    tableName: 'config'
+    tableName: 'config',
+    timestamps: false
   });
 
 module.exports = config

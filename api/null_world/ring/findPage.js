@@ -1,6 +1,8 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
 const { QueryTypes,Op } = require('sequelize');
+require("../../../model/ring");
+require("../../../model/item_commit_log");
 
 module.exports = async (req, res) => {
     const param = req.query;
@@ -15,7 +17,7 @@ module.exports = async (req, res) => {
     const where = {};
     if (status != 0) where.status = status
     if (number?.length > 0) where.item_id = number
-    const list = await sequelizer.Ring.findAndCountAll({
+    const list = await sequelizer.models.Ring.findAndCountAll({
         offset: offer,
         limit: limit,
         where, 
@@ -23,7 +25,7 @@ module.exports = async (req, res) => {
     })
     list.every(async function(ring){
         //查询排队列表
-        let list = await sequelizer.ItemCommitLog.findAll({
+        let list = await sequelizer.models.ItemCommitLog.findAll({
             where:{ 
                 item_id:ring.item_id, 
                 nonce:{ [Op.gte]: ring.nonce},

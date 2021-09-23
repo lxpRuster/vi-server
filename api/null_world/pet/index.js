@@ -1,6 +1,7 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
 const { QueryTypes,Op } = require('sequelize');
+require("../../../model/pet");
 
 module.exports = async (req, res) => {
     let where = {
@@ -28,7 +29,7 @@ module.exports = async (req, res) => {
         limit:limit,
         order:[["type",'desc'],["create_time","desc"]]
     }
-    let data = await sequelizer.pet.findAndCountAll(data);
+    let data = await sequelizer.models.Pet.findAndCountAll(data);
 
     res.status(200).json(result.success(data));
 }

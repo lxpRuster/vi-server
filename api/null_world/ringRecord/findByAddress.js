@@ -1,6 +1,7 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
 const { QueryType,Op  } = require('sequelize');
+require("../../../model/ring_record");
 
 module.exports = async (req, res) => {
     let param ={
@@ -34,7 +35,7 @@ module.exports = async (req, res) => {
                 challenger_address: address
             };
         }
-        let data = await sequelizer.RingRecord.findAndCountAll({
+        let data = await sequelizer.models.RingRecord.findAndCountAll({
             offset:offer,
             limit:limit,
             where:where,

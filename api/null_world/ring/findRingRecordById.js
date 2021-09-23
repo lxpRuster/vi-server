@@ -1,6 +1,6 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
-const { QueryTypes } = require('sequelize');
+require("../../../model/ring_record");
 
 module.exports = async (req, res) => {
     let id = req.query.id;
@@ -13,6 +13,6 @@ module.exports = async (req, res) => {
           item_id: id
         }
       }
-    let data =  await sequelizer.RingRecord.findAll(param);
+    let data =  await sequelizer.models.RingRecord.findAll(param);
     res.status(200).json(result.success(data));
 }

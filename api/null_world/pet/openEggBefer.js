@@ -1,6 +1,6 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
-const { QueryTypes } = require('sequelize');
+require("../../../model/item");
 
 module.exports = async (req, res) => {
 
@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
         where:{'model':1,'status':1},
         order:[["count",'asc']]
     }
-    let item = await sequelizer.Item.findOne(param);
+    let item = await sequelizer.models.Item.findOne(param);
     
     if(item == undefined){
         res.status(200).json(result.error("没有找到对应的item"));

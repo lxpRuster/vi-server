@@ -1,6 +1,7 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
 const { QueryTypes,Op } = require('sequelize');
+require("../../../model/pet_transaction");
 
 module.exports = async (req, res) => {
     const param = req.query;
@@ -17,6 +18,6 @@ module.exports = async (req, res) => {
             [Op.or]: [{ buy_user_address: param.address }, { sell_user_address: param.address }],  
         }
     }
-    let data = await sequelizer.PetTransaction.findAndCountAll(opention);
+    let data = await sequelizer.models.PetTransaction.findAndCountAll(opention);
     res.status(200).json(result.success(data));
 }

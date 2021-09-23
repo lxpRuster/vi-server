@@ -1,9 +1,9 @@
 /* indent size: 2 */
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/sequelize");
+const sequelize = require("../config/mysql2");
 
 
-const message = sequelize.define('message', {
+const message = sequelize.define('Message', {
     id: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
@@ -34,6 +34,7 @@ const message = sequelize.define('message', {
         allowNull: true
     }
 }, {
-    tableName: 'message'
+    tableName: 'message',
+    timestamps: false
 });
 module.exports = message

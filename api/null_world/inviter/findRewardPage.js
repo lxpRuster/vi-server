@@ -1,6 +1,6 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
-const { QueryTypes } = require('sequelize');
+require("../../../model/invited_reward");
 
 module.exports = async (req, res) => {
     let param = req.query;
@@ -10,7 +10,7 @@ module.exports = async (req, res) => {
                 offer = Number((param.current-1)*param.pageSize);
                 limit = Number(param.pageSize)
         }
-        let data = sequelizer.InvitedReward.findAndCountAll({
+        let data = sequelizer.models.InvitedReward.findAndCountAll({
             offset:offer,
             limit:limit,
             where:{address:param.address}

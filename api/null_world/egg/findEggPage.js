@@ -1,5 +1,6 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
+require("../../../model/egg_transaction");
 
 module.exports = async (req, res) => {
     let param = {
@@ -19,7 +20,7 @@ module.exports = async (req, res) => {
             offset = Number((param.current-1)*param.pageSize);
             limit = Number(param.pageSize)
     }
-    let data = await sequelizer.models.egg_transaction.findAndCountAll({
+    let data = await sequelizer.models.EggTransaction.findAndCountAll({
         limit: limit,
         offset:offset,
         where:where,

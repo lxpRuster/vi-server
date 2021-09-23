@@ -1,8 +1,8 @@
 /* indent size: 2 */
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/sequelize");
+const sequelize = require("../config/mysql2");
 
-const pet_transaction = sequelize.define('pet_transaction', {
+const pet_transaction = sequelize.define('PetTransaction', {
     id: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
@@ -46,7 +46,8 @@ const pet_transaction = sequelize.define('pet_transaction', {
         allowNull: true
     }
 }, {
-    tableName: 'pet_transaction'
+    tableName: 'pet_transaction',
+    timestamps: false
 });
 module.exports = pet_transaction
 

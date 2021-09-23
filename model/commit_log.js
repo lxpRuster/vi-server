@@ -1,8 +1,8 @@
 /* indent size: 2 */
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/sequelize");
+const sequelize = require("../config/mysql2");
 
-const commit_log = sequelize.define('commit_log', {
+const commit_log = sequelize.define('CommitLog', {
     commit_id: {
         type: DataTypes.INTEGER(11),
         allowNull: false,
@@ -30,6 +30,7 @@ const commit_log = sequelize.define('commit_log', {
         allowNull: true
     }
 }, {
-    tableName: 'commit_log'
+    tableName: 'commit_log',
+    timestamps: false
 });
 module.exports = commit_log

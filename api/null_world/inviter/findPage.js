@@ -1,6 +1,6 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
-const { QueryTypes } = require('sequelize');
+require("../../../model/address_invited");
 
 module.exports = async (req, res) => {
     let param = req.query;
@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
             limit = Number(param.pageSize)
     }
 
-    let data = sequelizer.AddressInvited.findAndCountAll({
+    let data = sequelizer.models.AddressInvited.findAndCountAll({
         offset:offer,
         limit:limit,
         where:{address:param.address},

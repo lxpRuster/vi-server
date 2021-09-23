@@ -1,9 +1,9 @@
 /* indent size: 2 */
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/sequelize");
+const sequelize = require("../config/mysql2");
 
 
-  const event_Log = sequelize.define('event_Log', {
+  const event_Log = sequelize.define('EventLog', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -23,6 +23,7 @@ const sequelize = require("../config/sequelize");
       allowNull: true
     }
   }, {
-    tableName: 'event_Log'
+    tableName: 'event_Log',
+    timestamps: false
   });
 module.exports = event_Log

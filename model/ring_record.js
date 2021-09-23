@@ -1,9 +1,9 @@
 /* indent size: 2 */
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/sequelize");
+const sequelize = require("../config/mysql2");
 
 
-const ring_record = sequelize.define('ring_record', {
+const ring_record = sequelize.define('RingRecord', {
     id: {
         type: DataTypes.BIGINT,
         allowNull: false,
@@ -55,7 +55,8 @@ const ring_record = sequelize.define('ring_record', {
         allowNull: true
     }
 }, {
-    tableName: 'ring_record'
+    tableName: 'ring_record',
+    timestamps: false
 });
 module.exports = ring_record
 

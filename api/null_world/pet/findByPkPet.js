@@ -5,7 +5,7 @@ const { QueryTypes } = require('sequelize');
 module.exports = async (req, res) => {
     let address = req.query.address;
     let sql = "select * from pet where owner_address = ? and type <> 255  and status = 4";
-    let data = await sequelize.query(sql,{
+    let data = await sequelizer.query(sql,{
         replacements: [address],
         type: QueryTypes.SELECT
       })

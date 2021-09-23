@@ -1,9 +1,9 @@
 /* indent size: 2 */
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/sequelize");
+const sequelize = require("../config/mysql2");
 
 
-const pet = sequelize.define('pet', {
+const pet = sequelize.define('Pet', {
     pet_id: {
         type: DataTypes.BIGINT,
         allowNull: false,
@@ -34,6 +34,7 @@ const pet = sequelize.define('pet', {
         allowNull: true
     }
 }, {
-    tableName: 'pet'
+    tableName: 'pet',
+    timestamps: false
 });
 module.exports = pet

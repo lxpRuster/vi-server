@@ -1,33 +1,28 @@
 /* indent size: 2 */
+
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/mysql2");
+const sequelize = require("../config/mysql2")
 
-
-  const egg_transaction = sequelize.define('EggTransaction', {
+  const Model = sequelize.define('AddressInvited', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
-    form_address: {
+    address: {
       type: DataTypes.STRING(255),
       allowNull: true
     },
-    to_address: {
+    invited_address: {
       type: DataTypes.STRING(255),
-      allowNull: true
-    },
-    value: {
-      type: DataTypes.BIGINT,
       allowNull: true
     },
     create_time: {
-      type: DataTypes.DATE,
+      type: DataTypes.BIGINT,
       allowNull: true
     }
   }, {
-    tableName: 'egg_transaction',
+    tableName: 'address_invited',
     timestamps: false
   });
-module.exports = egg_transaction

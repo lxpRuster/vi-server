@@ -1,5 +1,6 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
+require("../../../model/pet");
 
 module.exports = async (req, res) => {
     let tx_hash  = req.query.tx_hash;
@@ -10,7 +11,7 @@ module.exports = async (req, res) => {
     let param = {
         where:{'tx_hash':tx_hash}
     }
-    let data = await sequelizer.pet.findAll(param);
+    let data = await sequelizer.models.Pet.findAll(param);
 
     res.status(200).json(result.success(data));
 }

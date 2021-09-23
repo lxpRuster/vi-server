@@ -1,8 +1,8 @@
 /* indent size: 2 */
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/sequelize");
+const sequelize = require("../config/mysql2");
 
-const item = sequelize.define('item', {
+const item = sequelize.define('Item', {
     id: {
         type: DataTypes.BIGINT,
         allowNull: false,
@@ -38,6 +38,7 @@ const item = sequelize.define('item', {
         allowNull: true
     }
 }, {
-    tableName: 'item'
+    tableName: 'item',
+    timestamps: false
 });
 module.exports = item

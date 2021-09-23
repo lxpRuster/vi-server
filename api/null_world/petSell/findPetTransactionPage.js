@@ -1,6 +1,6 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
-const { QueryTypes } = require('sequelize');
+require("../../../model/pet_transaction");
 
 module.exports = async (req, res) => {
     const param = req.query;
@@ -16,6 +16,6 @@ module.exports = async (req, res) => {
         limit:limit,
         order: [[ 'create_time', 'desc' ]],
     }
-    let data = await  sequelizer.PetTransaction.findAndCountAll(option);
+    let data = await  sequelizer.models.PetTransaction.findAndCountAll(option);
     res.status(200).json(result.success(data));
 }

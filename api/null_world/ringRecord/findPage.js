@@ -1,6 +1,6 @@
 const  sequelizer = require("../../../config/mysql2");
 const  result = require("../../../utils/Result");
-const { QueryTypes } = require('sequelize');
+require("../../../model/ring_record");
 
 module.exports = async (req, res) => {
     let param = req.query;
@@ -22,6 +22,6 @@ module.exports = async (req, res) => {
         limit: limit,
         order:[["create_time",'desc']],
     }
-    let data = await sequelizer.RingRecord.findAndCountAll(param);
+    let data = await sequelizer.models.RingRecord.findAndCountAll(param);
     res.status(200).json(result.success(data));
 }
