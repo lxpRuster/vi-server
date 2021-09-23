@@ -17,11 +17,11 @@ module.exports = async (req, res) => {
             offer = Number((obj.current-1)*obj.pageSize);
             limit = Number(obj.pageSize)
     }
-    let param = {
+    let option = {
         offset: offer,
         limit: limit,
         order:[["create_time",'desc']],
     }
-    let data = await sequelizer.models.RingRecord.findAndCountAll(param);
+    let data = await sequelizer.models.RingRecord.findAndCountAll(option);
     res.status(200).json(result.success(data));
 }

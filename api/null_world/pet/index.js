@@ -23,13 +23,13 @@ module.exports = async (req, res) => {
     if(type == 2){
         where.type = { [Op.ne]: 255}
     }
-    let data = {
+    let option = {
         where:where,
         offset:offer,
         limit:limit,
         order:[["type",'desc'],["create_time","desc"]]
     }
-    let data = await sequelizer.models.Pet.findAndCountAll(data);
+    let data = await sequelizer.models.Pet.findAndCountAll(option);
 
     res.status(200).json(result.success(data));
 }

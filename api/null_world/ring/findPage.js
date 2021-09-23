@@ -5,8 +5,7 @@ require("../../../model/ring");
 require("../../../model/item_commit_log");
 
 module.exports = async (req, res) => {
-    const param = req.query;
-    const { status, current, pageSize, sort, number } = param ;   
+    const { status, current, pageSize, sort, number } = req.query;   
     let offer = 0;
     let limit = 10;
     if(pageSize != undefined && current != undefined){
@@ -23,7 +22,7 @@ module.exports = async (req, res) => {
         where, 
         order: [["createTime", 'desc']],
     })
-    list.every(async function(ring){
+    list.rows.every(async function(ring){
         //查询排队列表
         let list = await sequelizer.models.ItemCommitLog.findAll({
             where:{ 
