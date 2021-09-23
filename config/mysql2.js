@@ -1,7 +1,7 @@
 // Require and initialize outside of your main handler
 const {Sequelize} = require("sequelize");
 
-const sequelize = new Sequelize('test1_nulls_world', process.env.USER, process.env.PASSWORD, {
+const sequelize = new Sequelize('test2_nulls_world', process.env.USER, process.env.PASSWORD, {
     host: process.env.HOST,
     port: 3306,
     dialect: 'mysql',
