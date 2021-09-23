@@ -1,9 +1,8 @@
 /* indent size: 2 */
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/mysql2");
+const sequelize = require("../config/mysql2")
 
-
-  const egg_transaction = sequelize.define('EggTransaction', {
+  const Model = sequelize.define('EggTransaction', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -25,9 +24,13 @@ const sequelize = require("../config/mysql2");
     create_time: {
       type: DataTypes.DATE,
       allowNull: true
+    },
+    tx_hash: {
+      type: DataTypes.STRING(255),
+      allowNull: true
     }
   }, {
     tableName: 'egg_transaction',
     timestamps: false
   });
-module.exports = egg_transaction
+  module.exports = Model;

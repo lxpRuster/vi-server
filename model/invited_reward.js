@@ -1,9 +1,8 @@
 /* indent size: 2 */
-
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/mysql2");
+const sequelize = require("../config/mysql2")
 
-  const Model = app.model.define('InvitedReward', {
+  const Model = sequelize.define('InvitedReward', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -41,5 +40,5 @@ const sequelize = require("../config/mysql2");
   }, {
     tableName: 'invited_reward',
     timestamps: false
-
   });
+  module.exports = Model;

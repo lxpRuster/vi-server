@@ -1,9 +1,8 @@
 /* indent size: 2 */
-const { DataTypes } = require('sequelize');
-const sequelize = require("../config/mysql2");
+const {DataTypes} = require('sequelize');
+const sequelize = require("../config/mysql2")
 
-
-  const Model = sequelize.define('token_info', {
+  const Model = sequelize.define('TokenInfo', {
     id: {
       type: DataTypes.INTEGER(11),
       allowNull: false,
@@ -30,8 +29,8 @@ const sequelize = require("../config/mysql2");
       allowNull: true
     }
   }, {
-    tableName: 'ring',
+    tableName: 'token_info',
     timestamps: false
   });
 
-  module.exports = Model
+  module.exports = Model;

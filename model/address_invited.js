@@ -1,5 +1,4 @@
 /* indent size: 2 */
-
 const {DataTypes} = require('sequelize');
 const sequelize = require("../config/mysql2")
 
@@ -26,3 +25,4 @@ const sequelize = require("../config/mysql2")
     tableName: 'address_invited',
     timestamps: false
   });
+  module.exports = Model;

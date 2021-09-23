@@ -1,9 +1,9 @@
 /* indent size: 2 */
+
 const {DataTypes} = require('sequelize');
-const sequelize = require("../config/mysql2");
+const sequelize = require("../config/mysql2")
 
-
-  const ring = sequelize.define('Ring', {
+  const Model = sequelize.define('Ring', {
     item_id: {
       type: DataTypes.BIGINT,
       allowNull: false,
@@ -60,9 +60,18 @@ const sequelize = require("../config/mysql2");
     max_multipe: {
       type: DataTypes.INTEGER(1),
       allowNull: true
+    },
+    token_name: {
+      type: DataTypes.STRING(50),
+      allowNull: true
+    },
+    token_precision: {
+      type: DataTypes.INTEGER(1),
+      allowNull: true
     }
   }, {
     tableName: 'ring',
     timestamps: false
   });
-module.exports = ring
+
+  module.exports = Model;
